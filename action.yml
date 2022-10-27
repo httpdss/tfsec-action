@@ -28,6 +28,8 @@ inputs:
 outputs:
   tfsec-return-code:
     description: "tfsec command return code"
+  tfsec-output:
+    description: "tfsec command output"
 runs:
   using: "docker"
   image: "Dockerfile"
