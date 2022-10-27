@@ -26,11 +26,4 @@ FORMAT=${INPUT_FORMAT:-default}
 
 TFSEC_OUTPUT=$(tfsec  --format=${FORMAT} ${SOFT_FAIL} ${TFSEC_ARGS_OPTION} "${INPUT_WORKING_DIRECTORY}")
 
-echo "${TFSEC_OUTPUT}"
-
-TFSEC_OUTPUT=$(cat << EOF
-'${TFSEC_OUTPUT}'
-EOF
-)
-
-echo "tfsec-output=${TFSEC_OUTPUT}" >> $GITHUB_OUTPUT
+echo "::set-output name=TFSEC_OUTPUT::$TFSEC_OUTPUT"
