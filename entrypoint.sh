@@ -26,4 +26,4 @@ FORMAT=${INPUT_FORMAT:-default}
 
 TFSEC_OUTPUT=$(tfsec  --format=${FORMAT} ${SOFT_FAIL} ${TFSEC_ARGS_OPTION} "${INPUT_WORKING_DIRECTORY}")
 
-echo "::set-output name=TFSEC_OUTPUT::$TFSEC_OUTPUT"
+echo "::set-output name=tfsec-output::$TFSEC_OUTPUT"
