@@ -18,10 +18,12 @@ if [ -n "${INPUT_ADDITIONAL_ARGS}" ]; then
   TFSEC_ARGS_OPTION="${INPUT_ADDITIONAL_ARGS}"
 fi
 
-if [ -n "${INPUT_SOFT_FAIL}" ]; then 
+if [ -n "${INPUT_SOFT_FAIL}" ]; then
   SOFT_FAIL="--soft-fail"
 fi
 
 FORMAT=${INPUT_FORMAT:-default}
 
-tfsec  --format=${FORMAT} ${SOFT_FAIL} ${TFSEC_ARGS_OPTION} "${INPUT_WORKING_DIRECTORY}" 
+echo 'tfsec-output<<EOF' >> $GITHUB_OUTPUT
+tfsec  --format=${FORMAT} ${SOFT_FAIL} ${TFSEC_ARGS_OPTION} "${INPUT_WORKING_DIRECTORY}" >> $GITHUB_OUTPUT
+echo 'EOF' >> $GITHUB_OUTPUT
