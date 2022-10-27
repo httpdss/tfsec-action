@@ -28,4 +28,6 @@ TFSEC_OUTPUT=$(tfsec  --format=${FORMAT} ${SOFT_FAIL} ${TFSEC_ARGS_OPTION} "${IN
 
 echo "${TFSEC_OUTPUT}"
 
+TFSEC_OUTPUT=$(echo $TFSEC_OUTPUT | tr '\n' ' ')
+
 echo "tfsec-output=${TFSEC_OUTPUT}" >> $GITHUB_OUTPUT
