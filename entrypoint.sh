@@ -24,10 +24,6 @@ fi
 
 FORMAT=${INPUT_FORMAT:-default}
 
-CMD_OUTPUT=$(tfsec  --format=${FORMAT} ${SOFT_FAIL} ${TFSEC_ARGS_OPTION} "${INPUT_WORKING_DIRECTORY}" 2>&1)
-
-CMD_OUTPUT=`echo ${CMD_OUTPUT} | tr 'LOW' ":blue_circle: LOW" | tr 'MEDIUM' ":yellow_circle: MEDIUM" | tr 'HIGH' ":red_circle: HIGH"`
-
 echo 'tfsec-output<<EOF' >> $GITHUB_OUTPUT
-echo $CMD_OUTPUT >> $GITHUB_OUTPUT
+tfsec  --format=${FORMAT} ${SOFT_FAIL} ${TFSEC_ARGS_OPTION} "${INPUT_WORKING_DIRECTORY}" >> $GITHUB_OUTPUT
 echo 'EOF' >> $GITHUB_OUTPUT
