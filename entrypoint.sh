@@ -24,6 +24,12 @@ fi
 
 FORMAT=${INPUT_FORMAT:-default}
 
+CMD_OUTPUT=$(tfsec  --format=${FORMAT} ${SOFT_FAIL} ${TFSEC_ARGS_OPTION} "${INPUT_WORKING_DIRECTORY}" 2>&1)
+
+echo "==== OUTPUT ===="
+echo $CMD_OUTPUT
+echo "==== END OUTPUT ===="
+
 echo 'tfsec-output<<EOF' >> $GITHUB_OUTPUT
-tfsec  --format=${FORMAT} ${SOFT_FAIL} ${TFSEC_ARGS_OPTION} "${INPUT_WORKING_DIRECTORY}" >> $GITHUB_OUTPUT
+echo $CMD_OUTPUT >> $GITHUB_OUTPUT
 echo 'EOF' >> $GITHUB_OUTPUT
